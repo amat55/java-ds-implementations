@@ -26,13 +26,13 @@ Understanding data structures is crucial for writing efficient code, optimizing 
 
 Each data structure includes:
 
-Concept Explanation
+- Concept Explanation
 
-Code Implementation (in Python, C++, and Java)
+- Code Implementation in Java
 
-Common Interview Questions
+- Common Interview Questions
 
-Real-World Use Cases
+- Real-World Use Cases
 
 ## 🛠 Languages Used
 
