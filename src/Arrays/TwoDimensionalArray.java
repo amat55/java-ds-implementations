@@ -19,6 +19,38 @@ public class TwoDimensionalArray {
 
     // Inserting value in the Array
     public void insertValueInTheArray(int row, int col, int value) {
+        try {
+            // Check if the specified position is empty (contains Integer.MIN_VALUE)
+            if (arr[row][col] == Integer.MIN_VALUE) {
+                arr[row][col] = value; // Insert the value
+                System.out.println("Value Inserted!");
+            } else {
+                System.out.println("Already Occupied!"); // Position already has a value
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Out of Array!"); // Handle invalid index access
+        }
+    }
+
+    public void outputArray() {
+
+    }
+
+    public void deleteValue() {
+
+    }
+
+    public void accessValue(int value) {
+
+        for (int row = 0; row < arr.length; row++) {
+            for (int col = 0; col < arr[0].length; col++) {
+                if (arr[row][col] == value) {
+                    System.out.println("Value found " + value);
+                    return;
+                }
+            }
+        }
+        System.out.println("Value is not found!");
 
     }
 
@@ -35,6 +67,17 @@ public class TwoDimensionalArray {
         // Print the 2D array in a readable format
         System.out.println(Arrays.deepToString(int2DArray));
 
+        System.out.println();
 
+        TwoDimensionalArray myArray = new TwoDimensionalArray(2, 2);
+        myArray.insertValueInTheArray(0, 0, 10);
+        myArray.insertValueInTheArray(0, 1, 23);
+        myArray.insertValueInTheArray(1, 0, 5);
+        myArray.insertValueInTheArray(1, 1, 53);
+
+        System.out.println(Arrays.deepToString(myArray.arr));
+
+        System.out.println();
+        myArray.accessValue(100);
     }
 }
