@@ -33,26 +33,39 @@ public class TwoDimensionalArray {
     }
 
     public void outputArray() {
-
+        // Loop through the 2D array and print each element
+        for (int col = 0; col < arr.length; col++) {
+            for (int row = 0; row < arr[0].length; row++) { // Use arr[0].length to iterate columns correctly
+                System.out.println(arr[col][row]);
+            }
+        }
     }
 
-    public void deleteValue() {
 
+    public void deleteValue(int col, int row) {
+        try {
+            // Set the specified position back to Integer.MIN_VALUE (mark as empty)
+            arr[col][row] = Integer.MIN_VALUE;
+            System.out.println("Data deleted!");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Invalid Index!"); // Handle invalid index access
+        }
     }
 
-    public void accessValue(int value) {
 
+    public void searchValue(int value) {
+        // Loop through the 2D array to find the specified value
         for (int row = 0; row < arr.length; row++) {
             for (int col = 0; col < arr[0].length; col++) {
                 if (arr[row][col] == value) {
-                    System.out.println("Value found " + value);
-                    return;
+                    System.out.println("Value found: " + value + " at row " + row + ", column " + col);
+                    return; // Exit the method once the value is found
                 }
             }
         }
-        System.out.println("Value is not found!");
-
+        System.out.println("Value is not found!"); // Value is not in the array
     }
+
 
     public static void main(String[] args) {
         // Declare
@@ -70,14 +83,30 @@ public class TwoDimensionalArray {
         System.out.println();
 
         TwoDimensionalArray myArray = new TwoDimensionalArray(2, 2);
+
+        // Insert values into the 2D array
         myArray.insertValueInTheArray(0, 0, 10);
         myArray.insertValueInTheArray(0, 1, 23);
         myArray.insertValueInTheArray(1, 0, 5);
         myArray.insertValueInTheArray(1, 1, 53);
 
+        // Print the entire 2D array
         System.out.println(Arrays.deepToString(myArray.arr));
 
         System.out.println();
-        myArray.accessValue(100);
+
+        // Search for a value in the array (100 is not present)
+        myArray.searchValue(10);
+
+        System.out.println();
+
+        // Delete a value at row 0, column 1
+        myArray.deleteValue(0, 1);
+
+        System.out.println();
+
+        // Print the array after deletion
+        myArray.outputArray();
+
     }
 }
